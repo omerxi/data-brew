@@ -19,8 +19,7 @@ See the [Apache Jena Fuseki page](https://jena.apache.org/documentation/fuseki2/
 ## Loading RDF content
 
 Just basic dbPedia data for a start;
-See [Preloading RDF content]
-(https://github.com/pixelhumain/cityData/tree/master/cityData_server_scala_jena#preloading-rdf-content)
+See [Preloading RDF content](https://github.com/pixelhumain/cityData/tree/master/cityData_server_scala_jena#preloading-rdf-content)
 
 See [Setting up a DBPedia SPARQL mirror with Jena](http://svn.code.sf.net/p/eulergui/code/trunk/eulergui/html/server-sparql-dbpedia.html)
 
@@ -51,3 +50,19 @@ Find all items with first name, last name, and postal code "75015", and print fi
            OPTIONAL { ?X foaf:phone ?TEL }
       }
     } ORDER BY ?TEL
+
+
+List all items with id, first name, last name, or company name :
+[names.rq](names.rq)
+
+The same with also manager and representative:
+[names2.rq](names2.rq)
+
+
+To run such a query, $FUSEKI being the Fuseki distribution directory, type:
+    $FUSEKI/bin/s-query --service http://localhost:3030/omerxi/query --output=text --query names.rq
+
+There are other SPARQL clients, like EulerGUI.
+
+
+

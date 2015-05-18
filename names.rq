@@ -1,0 +1,19 @@
+    prefix foaf: <http://xmlns.com/foaf/0.1/>
+    prefix cob:  <http://cobusiness.fr/ontologies/barter.owl.n3#>
+    prefix oxi:  <http://omerxi.co/ontologies/core.owl.ttl#>
+    prefix dc: <http://purl.org/dc/elements/1.1/>
+    prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+  
+SELECT ?ID ?FIRSTNAME ?LASTNAME ?NAME
+WHERE {
+       GRAPH ?G {
+         ?X oxi:id ?ID .
+         OPTIONAL { ?X
+           foaf:lastName ?LASTNAME ;
+           foaf:firstName ?FIRSTNAME .
+         }
+         OPTIONAL {
+           ?X foaf:name ?NAME  .}
+      }
+    } ORDER BY ?ID
+
