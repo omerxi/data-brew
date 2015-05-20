@@ -1,0 +1,19 @@
+# select persons by first name, ignoring case, allowing "-" in the midlle or something else
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix cob:  <http://cobusiness.fr/ontologies/barter.owl.n3#>
+prefix oxi:  <http://omerxi.co/ontologies/core.owl.ttl#>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+
+SELECT ?FIRSTNAME ?LASTNAME ?TEL ?NAME
+WHERE {
+   GRAPH ?G {
+     ?X 
+     # vcard:postal-code "75015" ;
+       foaf:lastName ?LASTNAME ;
+       foaf:firstName ?FIRSTNAME
+       OPTIONAL { ?X foaf:phone ?TEL }
+       OPTIONAL { ?X foaf:name ?NAME }
+     FILTER regex( ?FIRSTNAME, "Jean.+Luc", 'i')
+  }
+} ORDER BY ?LASTNAME

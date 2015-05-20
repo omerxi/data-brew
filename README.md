@@ -15,6 +15,11 @@ Start the server:
 
 See the [Apache Jena Fuseki page](https://jena.apache.org/documentation/fuseki2/index.html)
 
+Within the Fuseki installed directory $FUSEKI, the data are in run/ , and within run/, with the default configuration, the databases are in databases/ .
+
+Knowing where the data are, one can use another Jena TDB based application, [semantic\_forms](https://github.com/jmvanel/semantic_forms/blob/master/scala/forms_play/README.md) : in [semantic\_forms] directory, type:
+    ln -s $FUSEKI/run/databases/myDatabaseName TDB
+
 
 ## Loading RDF content
 
@@ -57,6 +62,9 @@ List all items with id, first name, last name, or company name :
 
 The same with also manager and representative:
 [names2.rq](names2.rq)
+
+Select persons by first name, ignoring case, allowing "-" in the midlle or something else
+[first-name.rq](first-name.rq)
 
 
 To run such a query, $FUSEKI being the Fuseki distribution directory, type:
