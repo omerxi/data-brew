@@ -15,5 +15,6 @@ WHERE {
          OPTIONAL {
            ?X foaf:name ?NAME  .}
       }
-    } ORDER BY ?ID
+}
+ORDER BY ?ID
 

@@ -63,7 +63,7 @@ List all items with id, first name, last name, or company name :
 The same with also manager and representative:
 [names2.rq](names2.rq)
 
-Select persons by first name, ignoring case, allowing "-" in the midlle or something else
+Select persons by first name, ignoring case, allowing "-" in the middle or something else
 [first-name.rq](first-name.rq)
 
 
