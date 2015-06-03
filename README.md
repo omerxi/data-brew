@@ -73,4 +73,53 @@ To run such a query, $FUSEKI being the Fuseki distribution directory, type:
 There are other SPARQL clients, like EulerGUI.
 
 
+# Using SilK for linking person and telephone directory
+
+Background: [ Silk - The Linked Data Integration Framework ](http://silk-framework.com/)
+is useful to create links between URI resources by looking at their textual values.
+
+Its source is here :
+[https://github.com/silk-framework/silk](https://github.com/silk-framework/silk)
+.
+
+To run the Silk server from sources:
+
+You can download the zip from github,
+[https://github.com/silk-framework/silk/releases](https://github.com/silk-framework/silk/releases)
+
+then run SBT ( http://www.scala-sbt.org/ )
+then inside sbt :
+
+    project workbench
+    run
+
+Then one must either use the web UI interface,
+and / or edit an XML file, like :
+[linkSpec.xml](https://github.com/omerxi/data-brew/blob/master/silk/foaf_name.vcard_street-adress/linkSpec.xml)
+
+
+In linkSpec.xml there is a reference to the 2 input files : "chauffeurs" and "phones" :
+ 
+```xml
+   <SourceDataset dataSource="chauffeurs" var="a">
+   ...
+   <TargetDataset dataSource="phones" var="b">
+```
+
+These 2 files should be in directory :
+$HOME/.silk/workspace/$PROJECT/resources
+
+The file  linkSpec.xml should be in directory :
+    $HOME/.silk/workspace/$PROJECT/linking/foaf_name.vcard_street-adress
+
+Running Silk in command line:
+inside sbt :
+    project workbench
+    runMain de.fuberlin.wiwiss.silk.Silk -DconfigFile=<Silk-LSL file> [-DlinkSpec=<Interlink ID>] [-Dthreads=<threads>]  [-DlogQueries=(true/false)] [-Dreload=(true/false)]
+
+
+or with a jar, see:
+[Silk Single Machine](https://www.assembla.com/spaces/silk/wiki/Silk_Single_Machine)
+
+
 
