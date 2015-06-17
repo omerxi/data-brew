@@ -1,8 +1,8 @@
 # data-brew
 
-Mix our data with Linked Open Data, SPARQL queries and algorithms
+Mix our data (already RDFized with companion project [semantize](../semantize) ) with Linked Open Data, SPARQL queries and algorithms
 
-## Starting a SPARQL server
+## Starting a SPARQL server (Fuseki)
 
 You can use [Fuseki](http://jena.apache.org/documentation/serving_data/) web manager.
 Download [Apache Jena Fuseki](https://jena.apache.org/download/) .
@@ -20,6 +20,8 @@ Within the Fuseki installed directory $FUSEKI, the data are in run/ , and within
 Knowing where the data are, one can use another Jena TDB based application, [semantic\_forms](https://github.com/jmvanel/semantic_forms/blob/master/scala/forms_play/README.md) : in [semantic\_forms] directory, type:
     ln -s $FUSEKI/run/databases/myDatabaseName TDB
 
+## Starting a SPARQL server (Blazegraph)
+See [Deploying Nano Sparql Server](http://wiki.blazegraph.com/wiki/index.php/NanoSparqlServer#Deploying_NanoSparqlServer)
 
 ## Loading RDF content
 

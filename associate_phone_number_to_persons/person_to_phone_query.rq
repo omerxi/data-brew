@@ -1,0 +1,28 @@
+prefix foaf:	<http://xmlns.com/foaf/0.1/>
+prefix cob:	<http://cobusiness.fr/ontologies/barter.owl.n3#>
+prefix oxi:	<http://omerxi.com/ontologies/core.owl.ttl#>
+prefix dc:	<http://purl.org/dc/elements/1.1/>
+prefix vcard:	<http://www.w3.org/2006/vcard/ns#>
+prefix fn:	<http://www.w3.org/2005/xpath-functions#>
+prefix afn:	<http://jena.hpl.hp.com/ARQ/function#>
+
+# {"url": "http://www.my-phone-supplier.com", "who": "John Doo", "where": "75013 Paris", "timeout": 20000}
+
+CONSTRUCT {
+  _:query oxi:url "http://www.my-phone-supplier.com" ;
+          oxi:who ?FIRST_LAST_NAME ;
+          oxi:who ?NAME ;
+          oxi:where ?PC ;
+          oxi:timeout "20000" .
+} WHERE {
+   # GRAPH ?G {
+     ?X oxi:id	# "EVTC001100001" ;
+		# "EVTC075140343" ; # 
+		<ID> ;
+        vcard:postal-code ?PC .
+     OPTIONAL {
+	?X foaf:lastName ?LASTNAME ; foaf:firstName ?FIRSTNAME . }
+     OPTIONAL { ?X foaf:name ?NAME }
+     BIND ( fn:concat( ?FIRSTNAME , " ", ?LASTNAME ) AS ?FIRST_LAST_NAME )
+   # }
+}
