@@ -1,0 +1,77 @@
+<Silk>
+
+  <Prefixes>
+    <Prefix id="rdfs" namespace="http://www.w3.org/2000/01/rdf-schema#" />
+    <Prefix id="dbpedia" namespace="http://dbpedia.org/ontology/" />
+    <Prefix id="gn" namespace="http://www.geonames.org/ontology#" />
+  </Prefixes>
+
+  <DataSources>
+   <!--SourceDataset dataSource="persons" var="a">
+   <TargetDataset dataSource="phones" var="b" -->
+
+    <DataSource id="persons" type="file">
+      <Param name="format" value="TURTLE" />
+      <!-- we'd like JSON-LD !!! -->
+      <Param name="file" value="/home/jmv/src/data-brew/drivers_output.ttl" />
+    </DataSource>
+    <DataSource id="phones" type="file">
+      <Param name="format" value="TURTLE" />
+      <Param name="file" value="/tmp/output.ttl" />
+    </DataSource>
+  </DataSources>
+
+<Interlinks>
+<Interlink id="persons-phones">
+  <LinkType>&lt;http://www.w3.org/2002/07/owl#sameAs&gt;</LinkType>
+  <SourceDataset dataSource="persons" var="a">
+    <!--RestrictTo> ?a ?p ?v ; &lt;http://omerxi.com/ontologies/core.owl.ttl#status&gt; &lt;http://fr.dbpedia.org/resource/Personne_morale&gt; . </RestrictTo-->
+    <RestrictTo> ?a ?p ?v . </RestrictTo>
+  </SourceDataset>
+  <TargetDataset dataSource="phones" var="b">
+    <RestrictTo> ?b ?p ?v . </RestrictTo>
+  </TargetDataset>
+  <LinkageRule>
+    <Aggregate id="unnamed_15" required="false" weight="1" type="average">
+      <Compare id="unnamed_5" required="false" weight="1" metric="levenshteinDistance" threshold="9.0" indexing="true">
+        <TransformInput id="unnamed_3" function="lowerCase">
+          <TransformInput id="unnamed_14" function="concat">
+            <Input id="unnamed_1" path="?a/&lt;http://www.w3.org/2006/vcard/ns#street-address&gt;"/>
+            <Input id="unnamed_11" path="?a/&lt;http://www.w3.org/2006/vcard/ns#postal-code&gt;"/>
+            <Input id="unnamed_13" path="?a/&lt;http://www.w3.org/2006/vcard/ns#locality&gt;"/>
+            <Param name="glue" value=" "/>
+          </TransformInput>
+        </TransformInput>
+        <TransformInput id="unnamed_4" function="lowerCase">
+          <Input id="unnamed_2" path="?b/&lt;http://www.w3.org/2006/vcard/ns#street-address&gt;"/>
+        </TransformInput>
+        <Param name="minChar" value="0"/>
+        <Param name="maxChar" value="z"/>
+      </Compare>
+      <Compare id="unnamed_10" required="false" weight="1" metric="levenshteinDistance" threshold="5.0" indexing="true">
+        <TransformInput id="unnamed_8" function="lowerCase">
+          <Input id="unnamed_7" path="?a/&lt;http://xmlns.com/foaf/0.1/name&gt;"/>
+        </TransformInput>
+        <TransformInput id="unnamed_9" function="lowerCase">
+          <Input id="unnamed_6" path="?b/&lt;http://xmlns.com/foaf/0.1/name&gt;"/>
+        </TransformInput>
+        <Param name="minChar" value="0"/>
+        <Param name="maxChar" value="z"/>
+      </Compare>
+    </Aggregate>
+  </LinkageRule>
+  <Filter/>
+      <Outputs>
+        <Output type="file" minConfidence="0.95">
+          <Param name="file" value="accepted_links.nt" />
+          <Param name="format" value="ntriples" />
+        </Output>
+        <Output type="file" maxConfidence="0.95">
+          <Param name="file" value="verify_links.nt" />
+          <Param name="format" value="alignment" />
+        </Output>
+      </Outputs>
+</Interlink>
+</Interlinks>
+
+</Silk>
