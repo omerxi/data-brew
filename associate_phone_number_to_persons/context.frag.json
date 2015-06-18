@@ -1,0 +1,9 @@
+     "@context" : { \
+        "name": "http://omerxi.com/ontologies/core.owl.ttl#name", \
+        "address": "http://omerxi.com/ontologies/core.owl.ttl#address", \
+        "phones": "http://omerxi.com/ontologies/core.owl.ttl#phones", \
+\
+        "foaf" : "http://xmlns.com/foaf/0.1/", \
+        "vcard" : "http://www.w3.org/2006/vcard/ns#", \
+        "oxi" : "http://omerxi.com/ontologies/core.owl.ttl#" \
+      }
