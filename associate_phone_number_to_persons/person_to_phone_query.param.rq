@@ -13,15 +13,17 @@ CONSTRUCT {
 	oxi:remote "http://192.168.1.13:4444/wd/hub" ;
           oxi:who ?FIRST_LAST_NAME ;
           oxi:who ?NAME ;
-          oxi:where ?PC ;
-          oxi:timeout "20000" .
+          oxi:where ?CODE_LOC ;
+          oxi:timeout 60000 .
 } WHERE {
    # GRAPH ?G {
      ?X oxi:id <ID> ;
-        vcard:postal-code ?PC .
+        vcard:postal-code ?PC ;
+        vcard:locality ?LOC .
      OPTIONAL {
 	?X foaf:lastName ?LASTNAME ; foaf:firstName ?FIRSTNAME . }
      OPTIONAL { ?X foaf:name ?NAME }
      BIND ( fn:concat( ?FIRSTNAME , " ", ?LASTNAME ) AS ?FIRST_LAST_NAME )
+     BIND ( fn:concat( ?PC , " ", ?LOC ) AS ?CODE_LOC )
    # }
 }
