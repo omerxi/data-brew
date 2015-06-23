@@ -5,6 +5,7 @@
     <Prefix id="dbpedia" namespace="http://dbpedia.org/ontology/" />
     <Prefix id="gn" namespace="http://www.geonames.org/ontology#" />
     <Prefix id="oxi" namespace="http://omerxi.com/ontologies/core.owl.ttl#" />
+    <Prefix id="oxid" namespace="http://omerxi.com/resource/" />
     <Prefix id="vcard" namespace="http://www.w3.org/2006/vcard/ns#" />
     <Prefix id="dbpedia" namespace="http://fr.dbpedia.org/resource/" />
     <Prefix id="foaf" namespace="http://xmlns.com/foaf/0.1/" />
@@ -13,7 +14,7 @@
   <DataSources>
     <DataSource id="persons" type="file">
       <Param name="format" value="TURTLE" />
-      <Param name="file" value="../../drivers_output.ttl" />
+      <Param name="file" value="/tmp/extractbyid.ttl" />
       <Param name="graph" value=""/>
     </DataSource>
     <DataSource id="phones" type="file">

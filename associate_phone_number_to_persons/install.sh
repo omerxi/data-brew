@@ -3,6 +3,8 @@
 
 source config.sh
 
+ln -s $PERSON_DATA persons.ttl
+
 # Silk
 mkdir $HOME/apps
 

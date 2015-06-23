@@ -1,0 +1,10 @@
+prefix foaf:    <http://xmlns.com/foaf/0.1/>
+prefix oxi:     <http://omerxi.com/ontologies/core.owl.ttl#>
+
+# transfer phone numbers from phone directory results to drivers main URI
+CONSTRUCT {
+  ?DRIVER foaf:phone ?PHONE .
+}
+WHERE { ?DRIVER oxi:hasPhone ?PHONEDATA .
+  ?PHONEDATA oxi:phones ?PHONE .
+}
