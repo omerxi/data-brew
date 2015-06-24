@@ -1,0 +1,38 @@
+prefix foaf:	<http://xmlns.com/foaf/0.1/>
+prefix cob:	<http://cobusiness.fr/ontologies/barter.owl.n3#>
+prefix oxi:	<http://omerxi.com/ontologies/core.owl.ttl#>
+prefix dc:	<http://purl.org/dc/elements/1.1/>
+prefix vcard:	<http://www.w3.org/2006/vcard/ns#>
+
+SELECT ?name ?firstName ?lastName ?status ?street_address ?postal_code ?locality ?country_name ?join_date ?date ?id ?brand ?initials ?legal_form ?siren ?manager ?representative ?phone
+WHERE {
+?S oxi:id ?ID .
+OPTIONAL { ?S
+ <http://xmlns.com/foaf/0.1/name>                      ?name .
+}
+OPTIONAL { ?S
+ <http://xmlns.com/foaf/0.1/firstName>                 ?firstName ;
+ <http://xmlns.com/foaf/0.1/lastName>                  ?lastName  .
+}
+?S
+ <http://omerxi.com/ontologies/core.owl.ttl#status>    ?status ;
+ <http://www.w3.org/2006/vcard/ns#street-address>      ?street_address ;
+ <http://www.w3.org/2006/vcard/ns#postal-code>         ?postal_code ;
+ <http://www.w3.org/2006/vcard/ns#locality>            ?locality ;
+ <http://www.w3.org/2006/vcard/ns#country-name>        ?country_name ;
+ <http://omerxi.com/ontologies/core.owl.ttl#join-date> ?join_date ;    
+ <http://purl.org/dc/elements/1.1/date>                ?date ;
+ <http://omerxi.com/ontologies/core.owl.ttl#id>        ?id ;
+ <http://omerxi.com/ontologies/core.owl.ttl#brand>     ?brand .
+OPTIONAL { ?S
+ <http://omerxi.com/ontologies/core.owl.ttl#initials>  ?initials ;
+ <http://omerxi.com/ontologies/core.owl.ttl#legal-form>		?legal_form ;
+ <http://cobusiness.fr/ontologies/barter.owl.n3#siren>		?siren ;
+ <http://omerxi.com/ontologies/core.owl.ttl#manager>		?manager ;
+ <http://omerxi.com/ontologies/core.owl.ttl#representative>	?representative .
+}
+OPTIONAL { ?S
+ <http://xmlns.com/foaf/0.1/phone>				?phone .
+}
+
+}

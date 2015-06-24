@@ -1,0 +1,1 @@
+SELECT DISTINCT ?P where { ?S ?P ?O }

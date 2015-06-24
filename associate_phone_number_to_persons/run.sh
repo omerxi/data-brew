@@ -19,6 +19,7 @@ do
   arq --data=$PERSON_DATA --query person_to_phone_query.rq > /tmp/phone_query.ttl
   turtle --output=JSON-LD /tmp/phone_query.ttl >  /tmp/phone_query.json
   echo before index.js
+  rm $PHONE_JSON
   nodejs ../../semantize/fetch/vtc/phones/index.js "`cat /tmp/phone_query.json | tr '\n' ' ' `"
   RESULT_LENGTH=`wc -c < $PHONE_JSON`
   if test $RESULT_LENGTH -lt 10 ; then continue ; fi
