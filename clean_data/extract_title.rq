@@ -1,0 +1,34 @@
+prefix foaf:	<http://xmlns.com/foaf/0.1/>
+prefix cob:	<http://cobusiness.fr/ontologies/barter.owl.n3#>
+prefix oxi:	<http://omerxi.com/ontologies/core.owl.ttl#>
+prefix oxid:  <http://omerxi.com/resource/>
+prefix dc:	<http://purl.org/dc/elements/1.1/>
+prefix vcard:	<http://www.w3.org/2006/vcard/ns#>
+
+# extract role in enterprise
+# execute with Jena:
+# update --data=drivers_output.ttl --dump --update=clean_data/extract_title.rq > /tmp/drivers_output2.ttl
+# java -cp $JENAPATH riotcmd.riot --output=TURTLE /tmp/drivers_output2.ttl  > drivers_output2.ttl
+# or:
+# time rapper -i turtle -o turtle drivers_output2.ttl  > drivers_output3.ttl
+DELETE {
+	?X oxi:manager ?RAWMANAGER .
+	?X oxi:representative ?RAWREP .
+}
+INSERT {
+	?X oxi:manager ?MANAGER .
+	?X oxi:representative ?REP .
+
+	?X oxi:enterpriseTitle ?TITLE .
+	?X oxi:enterpriseTitleRepresentative ?TITLEREP .
+}
+WHERE {
+	?X oxi:manager ?RAWMANAGER
+       # , GÉRANT, DIRECTEUR  ... etc
+       BIND(REPLACE(?RAWMANAGER, ',.*', "") AS ?MANAGER )
+       BIND(REPLACE(?RAWMANAGER, '.*,', "") AS ?TITLE )
+
+	?X oxi:representative ?RAWREP
+       BIND(REPLACE(?RAWREP, ',.*', "") AS ?REP )
+       BIND(REPLACE(?RAWREP, '.*,', "") AS ?TITLEREP )
+}

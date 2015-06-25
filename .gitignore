@@ -18,3 +18,9 @@ project/plugins/project/
 
 # project specific
 secret.sh
+tmp/
+drivers_output*
+
+# Vim
+.*.swp
+.*.swo

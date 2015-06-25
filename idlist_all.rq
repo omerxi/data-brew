@@ -9,7 +9,6 @@ SELECT ?ID
 WHERE {
    # GRAPH ?G {
      ?X oxi:id ?ID .
-     ?X vcard:postal-code "75009" . # 75010" . # 75011" . # "75012" .
       OPTIONAL { ?X
         foaf:lastName ?LASTNAME ; foaf:firstName ?FIRSTNAME
       }
