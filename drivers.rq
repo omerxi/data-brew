@@ -7,7 +7,18 @@ prefix vcard:	<http://www.w3.org/2006/vcard/ns#>
 
 # used in create_other_formats.sh to dump in CSV all data about person + enterprises
 
-SELECT ?name ?firstName ?lastName ?status ?street_address ?postal_code ?locality ?country_name ?join_date ?date ?id ?brand ?initials ?legal_form ?siren ?manager ?representative ?phone
+SELECT ?name 
+?status
+?street_address ?postal_code ?locality ?country_name
+?capacityDepartment 
+?phone
+?firstName ?lastName 
+?join_date ?date
+?id ?brand ?initials ?legal_form
+?siren
+?manager ?representative
+?enterpriseTitle ?enterpriseTitleRepresentative
+
 WHERE {
 ?S oxi:id ?ID .
 OPTIONAL { ?S
@@ -35,7 +46,15 @@ OPTIONAL { ?S
  <http://omerxi.com/ontologies/core.owl.ttl#representative>	?representative .
 }
 OPTIONAL { ?S
- <http://xmlns.com/foaf/0.1/phone>				?phone .
+ <http://xmlns.com/foaf/0.1/phone>	?phone .
 }
-
+OPTIONAL { ?S
+ oxi:capacityDepartment			?capacityDepartment .
+}
+OPTIONAL { ?S
+ oxi:enterpriseTitle			?enterpriseTitle .
+}
+OPTIONAL { ?S
+ oxi:enterpriseTitleRepresentative	?enterpriseTitleRepresentative .
+}
 }

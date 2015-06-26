@@ -1,9 +1,8 @@
 
-SPARQL_ENDPOINT=http://localhost:9999/bigdata/namespace/omerxi1/sparql
-SPARQL_COMMAND="arq --data=$PERSON_DATA"
-SPARQL_COMMAND="rsparql --service=$SPARQL_ENDPOINT"
-
 HTMLDIR_CAPACITE="$HOME/src/semantize/registre/www2.transports.equipement.gouv.fr/registres/voyageurs"
+
+SPARQL_COMMAND="arq --data=$PERSON_DATA"
+source ../start_bigdata.sh
 
 
 PREFPERSON="oxid"

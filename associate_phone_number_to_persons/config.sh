@@ -3,7 +3,7 @@
 # set URL of server in variable SERVER, etc
 source secret.sh
 
-PERSON_DATA=../drivers_output.ttl
+PERSON_DATA=$PWD/../drivers_output.ttl
 
 # for download:
 SILKVERSION=silk-singlemachine-2.6.1-20150616

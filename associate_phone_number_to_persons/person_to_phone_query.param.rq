@@ -24,11 +24,7 @@ CONSTRUCT {
      OPTIONAL {
 	?X foaf:lastName ?LASTNAME ; foaf:firstName ?FIRSTNAME . }
      OPTIONAL { ?X foaf:name ?NAME }
-     OPTIONAL { ?X oxi:manager ?RAWMANAGER
-       # TODO extract role in enterprise
-       # BIND(REPLACE(?RAWMANAGER, ', *GÉRANT.*', "") AS ?MANAGER )
-       BIND(REPLACE(?RAWMANAGER, ',.*', "") AS ?MANAGER )
-     }
+     OPTIONAL { ?X oxi:manager ?MANAGER }
      BIND ( fn:concat( ?FIRSTNAME , " ", ?LASTNAME ) AS ?FIRST_LAST_NAME )
      BIND ( fn:concat( ?PC , " ", ?LOC ) AS ?CODE_LOC )
      BIND ( fn:concat( ?NAME , " ", ?MANAGER ) AS ?NAME_MANAGER )
