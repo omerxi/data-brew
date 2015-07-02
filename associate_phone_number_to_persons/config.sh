@@ -4,6 +4,9 @@
 source secret.sh
 
 PERSON_DATA=$PWD/../drivers_output.ttl
+SPARQL_COMMAND="arq --data=$PERSON_DATA"
+SPARQL_ENDPOINT=http://localhost:9999/bigdata/namespace/omerxi1/sparql
+SPARQL_COMMAND="rsparql --service=$SPARQL_ENDPOINT"
 
 # for download:
 SILKVERSION=silk-singlemachine-2.6.1-20150616

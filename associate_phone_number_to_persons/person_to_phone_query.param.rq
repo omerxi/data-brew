@@ -15,7 +15,8 @@ CONSTRUCT {
           oxi:who ?FIRST_LAST_NAME ;
           oxi:who ?NAME_MANAGER ;
           oxi:where ?CODE_LOC ;
-          oxi:timeout 60000 .
+          # oxi:timeout 60000
+          .
 } WHERE {
    # GRAPH ?G {
      ?X oxi:id <ID> ;
@@ -25,8 +26,8 @@ CONSTRUCT {
 	?X foaf:lastName ?LASTNAME ; foaf:firstName ?FIRSTNAME . }
      OPTIONAL { ?X foaf:name ?NAME }
      OPTIONAL { ?X oxi:manager ?MANAGER }
-     BIND ( fn:concat( ?FIRSTNAME , " ", ?LASTNAME ) AS ?FIRST_LAST_NAME )
-     BIND ( fn:concat( ?PC , " ", ?LOC ) AS ?CODE_LOC )
-     BIND ( fn:concat( ?NAME , " ", ?MANAGER ) AS ?NAME_MANAGER )
+     BIND ( concat( ?FIRSTNAME , " ", ?LASTNAME ) AS ?FIRST_LAST_NAME )
+     BIND ( concat( ?PC , " ", ?LOC ) AS ?CODE_LOC )
+     BIND ( concat( ?NAME , " ", ?MANAGER ) AS ?NAME_MANAGER )
    # }
 }
